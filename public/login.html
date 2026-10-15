@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AVIGOS | Login</title>
+    <style>
+      :root {
+        --bg-dark: #071827;
+        --bg-light: #0f2238;
+        --panel: rgba(17, 31, 47, 0.92);
+        --panel-border: rgba(140, 175, 255, 0.18);
+        --primary: #5aa8ff;
+        --primary-strong: #2f7ef7;
+        --text: #edf4ff;
+        --muted: #a7bbd6;
+        --input: rgba(255, 255, 255, 0.04);
+        --shadow: rgba(4, 10, 18, 0.55);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: radial-gradient(circle at top, #123d63 0%, var(--bg-dark) 38%, #050d17 100%);
+        color: var(--text);
+      }
+
+      body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .page {
+        width: min(100%, 420px);
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--panel-border);
+        border-radius: 24px;
+        padding: 32px 28px 24px;
+        box-shadow: 0 30px 80px var(--shadow);
+        backdrop-filter: blur(10px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 20px;
+      }
+
+      .logo {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        font-size: 1.45rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+        color: #fff;
+        box-shadow: 0 12px 24px rgba(47, 126, 247, 0.45);
+      }
+
+      .brand-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .brand-text strong {
+        font-size: 1.1rem;
+        letter-spacing: 0.16em;
+      }
+
+      .brand-text small {
+        color: var(--muted);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(1.8rem, 3vw, 2.4rem);
+      }
+
+      .subtitle {
+        margin: 0 0 26px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      label {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      input {
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--input);
+        color: var(--text);
+        border-radius: 12px;
+        padding: 14px 16px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      input:focus {
+        border-color: rgba(90, 168, 255, 0.8);
+        box-shadow: 0 0 0 4px rgba(90, 168, 255, 0.12);
+      }
+
+      .password-wrap {
+        position: relative;
+      }
+
+      .password-wrap input {
+        padding-right: 92px;
+      }
+
+      .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 0.86rem;
+      }
+
+      .checkbox {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+      }
+
+      .checkbox input {
+        width: 15px;
+        height: 15px;
+        accent-color: var(--primary);
+      }
+
+      a {
+        color: #86c0ff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .btn {
+        width: 100%;
+        border: none;
+        border-radius: 12px;
+        padding: 15px 18px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, filter 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.04);
+      }
+
+      .btn.primary {
+        background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+        color: white;
+        box-shadow: 0 18px 28px rgba(47, 126, 247, 0.28);
+      }
+
+      .btn.secondary {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: var(--text);
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 0.8rem;
+        margin: 22px 0 18px;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .signup {
+        margin: 22px 0 0;
+        text-align: center;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="card" aria-label="Formulário de login">
+        <div class="brand">
+          <div class="logo">A</div>
+          <div class="brand-text">
+            <strong>AVIGOS</strong>
+            <small>Portal</small>
+          </div>
+        </div>
+
+        <h1>Bem-vindo</h1>
+        <p class="subtitle">Entre com seu e-mail e senha para acessar sua conta.</p>
+
+        <form>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" type="email" placeholder="seu@email.com" autocomplete="email" required />
+          </div>
+
+          <div class="field">
+            <label for="password">Senha</label>
+            <div class="password-wrap">
+              <input id="password" type="password" placeholder="Digite sua senha" autocomplete="current-password" required />
+              <button type="button" class="toggle-password" aria-label="Mostrar ou ocultar senha">Mostrar</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="checkbox">
+              <input type="checkbox" />
+              <span>Lembrar-me</span>
+            </label>
+            <a href="#">Esqueci a senha</a>
+          </div>
+
+          <button class="btn primary" type="submit">Entrar</button>
+        </form>
+
+        <div class="divider">ou</div>
+        <button class="btn secondary" type="button">Continuar com Google</button>
+
+        <p class="signup">Ainda não tem conta? <a href="#">Crie uma agora</a></p>
+      </section>
+    </main>
+
+    <script>
+      const toggleButton = document.querySelector('.toggle-password');
+      const passwordInput = document.getElementById('password');
+
+      toggleButton?.addEventListener('click', () => {
+        const shouldShow = passwordInput.type === 'password';
+        passwordInput.type = shouldShow ? 'text' : 'password';
+        toggleButton.textContent = shouldShow ? 'Ocultar' : 'Mostrar';
+      });
+
+      document.querySelector('form')?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const submitButton = event.currentTarget.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+
+        submitButton.textContent = 'Entrando...';
+        submitButton.disabled = true;
+
+        setTimeout(() => {
+          submitButton.textContent = originalText;
+          submitButton.disabled = false;
+        }, 1200);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <style>
+      :root {
+        --bg: #f4f7fb;
+        --panel: #ffffff;
+        --primary: #2d6cdf;
+        --primary-dark: #1e4fb5;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --line: #e5e7eb;
+        --shadow: 0 20px 45px rgba(31, 41, 55, 0.15);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #eef4ff 0%, #f9fafb 100%);
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text);
+      }
+
+      .card {
+        width: min(100%, 440px);
+        background: var(--panel);
+        border: 1px solid rgba(45, 108, 223, 0.08);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 32px 28px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        font-weight: 700;
+        color: var(--primary-dark);
+      }
+
+      .brand-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--primary), #5aa8ff);
+        color: #fff;
+        font-size: 18px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(1.8rem, 2vw, 2.2rem);
+      }
+
+      .subtitle {
+        margin: 0 0 24px;
+        color: var(--muted);
+        font-size: 0.97rem;
+      }
+
+      form {
+        display: grid;
+        gap: 16px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      label {
+        font-size: 0.92rem;
+        font-weight: 600;
+      }
+
+      input {
+        width: 100%;
+        height: 48px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 0 14px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        background: #fff;
+      }
+
+      input:focus {
+        border-color: rgba(45, 108, 223, 0.5);
+        box-shadow: 0 0 0 4px rgba(45, 108, 223, 0.12);
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .checkbox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 4px;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .checkbox input {
+        width: 18px;
+        height: 18px;
+        margin: 0;
+      }
+
+      button {
+        border: none;
+        border-radius: 12px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 12px 24px rgba(45, 108, 223, 0.25);
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+      }
+
+      .sign-in {
+        margin-top: 18px;
+        text-align: center;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+
+      .sign-in a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      @media (max-width: 480px) {
+        .card {
+          padding: 24px 18px;
+          border-radius: 14px;
+        }
+
+        .row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="brand">
+        <div class="brand-mark">A</div>
+        <span>AVIGOS</span>
+      </div>
+
+      <h1>Crie sua conta</h1>
+      <p class="subtitle">Preencha os dados abaixo para começar.</p>
+
+      <form>
+        <div class="row">
+          <div class="field">
+            <label for="firstName">Nome</label>
+            <input id="firstName" name="firstName" type="text" placeholder="Seu nome" />
+          </div>
+
+          <div class="field">
+            <label for="lastName">Sobrenome</label>
+            <input id="lastName" name="lastName" type="text" placeholder="Seu sobrenome" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" placeholder="seu@email.com" />
+        </div>
+
+        <div class="field">
+          <label for="password">Senha</label>
+          <input id="password" name="password" type="password" placeholder="Mínimo 8 caracteres" />
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">Confirmar senha</label>
+          <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Repita sua senha" />
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" />
+          <span>Aceito os termos e políticas da plataforma.</span>
+        </label>
+
+        <button type="submit">Registrar</button>
+      </form>
+
+      <div class="sign-in">
+        Já tem uma conta? <a href="#">Entrar</a>
+      </div>
+    </main>
+  </body>
+</html>
