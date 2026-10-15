@@ -1,0 +1,33 @@
+:root {
+  --preto-carvao: #171717;
+  --cinza-escuro: #242424;
+  --cinza-metalico: #454545;
+  --dourado: #B08D57;
+  --marfim: #E8E0D0;
+}
+
+body {
+  background-color: var(--preto-carvao);
+  color: var(--marfim);
+}
+
+.navbar {
+  background-color: var(--cinza-escuro);
+  border-bottom: 1px solid var(--dourado);
+}
+
+.btn-primary {
+  background-color: var(--dourado);
+  border-color: var(--dourado);
+  color: var(--preto-carvao);
+}
+
+.form-control {
+  background-color: var(--cinza-escuro);
+  border-color: var(--cinza-metalico);
+  color: var(--marfim);
+}
+
+.form-control::placeholder {
+  color: #bdb5a7;
+}
